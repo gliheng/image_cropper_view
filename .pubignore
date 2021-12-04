@@ -1,1 +1,9 @@
 /example
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+analysis_options.yaml
