@@ -285,10 +285,12 @@ class _ImageCropperState extends State<ImageCropper> {
                 onPressed: _cancelEdit,
               ),
               IconButton(
+                tooltip: 'Horizontal flip',
                 onPressed: _hFlipImage,
                 icon: const Icon(Icons.flip),
               ),
               IconButton(
+                tooltip: 'Vertical flip',
                 onPressed: _vFlipImage,
                 icon: const RotatedBox(
                   quarterTurns: 1,
@@ -296,12 +298,28 @@ class _ImageCropperState extends State<ImageCropper> {
                 ),
               ),
               IconButton(
+                tooltip: 'Rotate left',
                 onPressed: () => _rotateImage(math.pi / 2),
+                icon: const Icon(Icons.rotate_90_degrees_ccw),
+              ),
+              IconButton(
+                tooltip: 'Rotate right',
+                onPressed: () => _rotateImage(-math.pi / 2),
+                icon: Transform(
+                  alignment: Alignment.center,
+                  transform: Matrix4.identity()..scale(-1.0, 1.0),
+                  child: const Icon(Icons.rotate_90_degrees_ccw),
+                ),
+              ),
+              IconButton(
+                tooltip: 'Rotate',
+                onPressed: () {},
                 icon: const Icon(Icons.rotate_right),
               ),
               IconButton(
-                onPressed: () => _rotateImage(-math.pi / 2),
-                icon: const Icon(Icons.rotate_left),
+                tooltip: 'Zoom',
+                onPressed: () {},
+                icon: const Icon(Icons.zoom_in),
               ),
               ElevatedButton.icon(
                 icon: const Icon(Icons.save),
