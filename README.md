@@ -2,6 +2,8 @@
 
 A widget to crop your images.
 
+![](https://raw.githubusercontent.com/gliheng/image_cropper_view/master/image_cropper_view.jpg)
+
 ## Features
 - Supports pan, zoom, rotate gestures to position your image
 - Only dart code included, no native dependency

@@ -37,6 +37,7 @@ class _ImageCropperState extends State<ImageCropper> {
   ui.Image? bitImage;
   Size? clipSize;
   Matrix4? txMatrix;
+  Offset initialFocalPoint = Offset.zero;
 
   @override
   initState() {
@@ -136,17 +137,20 @@ class _ImageCropperState extends State<ImageCropper> {
     );
   }
 
-  _onScaleStart(ScaleStartDetails d) {}
+  _onScaleStart(ScaleStartDetails d) {
+    initialFocalPoint = d.focalPoint;
+  }
 
   _onScaleUpdate(ScaleUpdateDetails d) {
     var center = context.size!.center(Offset.zero);
     var focal = d.localFocalPoint.translate(-center.dx, -center.dy);
+    var focalDelta = d.focalPoint - initialFocalPoint;
     setState(() {
       sessionMatrix = Matrix4.identity()
         ..translate(focal.dx, focal.dy)
         ..scale(d.scale)
         ..rotateZ(d.rotation)
-        ..translate(d.delta.dx, d.delta.dy)
+        ..translate(focalDelta.dx, focalDelta.dy)
         ..translate(-focal.dx, -focal.dy);
     });
   }
